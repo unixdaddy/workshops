@@ -17,15 +17,10 @@ Demonstrate use of the different modules to delete the configuration (Nodes/Pool
 
 ## Step 1:
 
-Using your text editor of choice create a new file called `bigip-delete-configuration.yml`.
+Using VSCode create a new file called `bigip-delete-configuration.yml` by clicking the new file icon in the left pane.
 
-{% raw %}
-```
-[student1@ansible ~]$ nano bigip-delete-configuration.yml
-```
-{% endraw %}
+![picture of create file icon](../1.1-get-facts/images/vscode-openfile_icon.png)
 
->`vim` and `nano` are available on the control node, as well as Visual Studio and Atom via RDP
 
 ## Step 2:
 
@@ -70,7 +65,7 @@ Next, add the first `task` using the [bigip_virtual_server](https://docs.ansible
 {% raw %}
 ``` yaml
     - name: DELETE VIRTUAL SERVER
-      bigip_virtual_server:
+      f5networks.f5_modules.bigip_virtual_server:
         provider: "{{provider}}"
         name: "vip"
         state: absent
@@ -85,7 +80,7 @@ Next, add the second `task` using the [bigip_pool](https://docs.ansible.com/ansi
 {% raw %}
 ```yaml
     - name: DELETE POOL
-      bigip_pool:
+      f5networks.f5_modules.bigip_pool:
         provider: "{{provider}}"
         name: "http_pool"
         state: absent
@@ -99,7 +94,7 @@ Finally, add the last `task` using the [bigip_node](https://docs.ansible.com/ans
 {% raw %}
 ```yaml
     - name: DELETE NODES
-      bigip_node:
+      f5networks.f5_modules.bigip_node:
         provider: "{{provider}}"
         name: "{{hostvars[item].inventory_hostname}}"
         state: absent
@@ -107,16 +102,16 @@ Finally, add the last `task` using the [bigip_node](https://docs.ansible.com/ans
 ```
 {% endraw %}
 
-Save File and exit out of editor.
+Save File.
 
 ## Step 7
 The playbook will delete the virtual server, then the pool and then the nodes configured in previous exercises.
 
-Run the playbook - exit back into the command line of the control host and execute the following:
+Run the playbook - Go back to the Terminal on VS Code server and execute the following:
 
 {% raw %}
 ```
-[student1@ansible ~]$ ansible-playbook bigip-delete-configuration.yml
+[student1@ansible ~]$ ansible-navigator run bigip-delete-configuration.yml --mode stdout
 ```
 {% endraw %}
 
@@ -124,7 +119,7 @@ Run the playbook - exit back into the command line of the control host and execu
 
 {% raw %}
 ```
-[student1@ansible]$ ansible-playbook bigip-delete-configuration.yml
+[student1@ansible]$ ansible-navigator run bigip-delete-configuration.yml --mode stdout
 
 PLAY [BIG-IP TEARDOWN] ********************************************************
 

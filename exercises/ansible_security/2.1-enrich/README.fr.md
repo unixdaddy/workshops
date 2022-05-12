@@ -1,5 +1,8 @@
 # Exercice 2.1 - Enquête approfondie
 
+**Lisez ceci dans d'autres langues**: <br>
+[![uk](../../../images/uk.png) English](README.md),  [![japan](../../../images/japan.png) 日本語](README.ja.md), [![france](../../../images/fr.png) Français](README.fr.md).<br>
+
 ## Étape 1.1 - Le contexte
 
 Dans la dernière section, l'accent a été mis sur les outils individuels et sur la façon dont ils peuvent être automatisés avec Ansible. Dans le quotidien des administraeur de la sécurité, le besoin est bien plus élevé: lorsqu'un événement suspect se produit et nécessite une plus grande attention, les opérations de sécurité doivent déployer de nombreux outils pour sécuriser d'entreprise. Dans de nombreux environnements d'entreprise, les solutions de sécurité ne sont pas intégrées les unes aux autres et, dans les grandes organisations, différentes équipes sont en charge de différents aspects de la sécurité informatique, sans processus en commun. Cela conduit souvent à un travail manuel et à une interaction entre des personnes d'équipes différentes qui est sujette aux erreurs et qui est surtout lente.
@@ -33,7 +36,7 @@ Ensuite, comme il s'agit d'un atelier de sécurité, nous avons besoin d'un traf
 Exécutez le playbook:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible-playbook web_attack_simulation.yml
+[student<X>@ansible ansible-files]$ ansible-navigator run web_attack_simulation.yml
 ```
 
 > **Remarque**
@@ -287,7 +290,7 @@ Si vous réunissez toutes ces pièces, le playbook complet `enrich_log_sources.y
 Exécutez le playbook complet pour ajouter les deux sources de journal à QRadar:
 
 `` bash
-[étudiant <X> @ansible ~] $ ansible-playbook enrich_log_sources.yml
+[étudiant <X> @ansible ~] $ ansible-navigator run enrich_log_sources.yml
 `` ''
 
 Dans Check Point SmartConsole, vous pouvez même voir une petite fenêtre s'ouvrir dans le coin inférieur gauche pour vous informer de la progression. Si cela reste bloqué à 10%, vous pouvez généralement l'ignorer en toute sécurité, l'exportateur de journaux fonctionne quand même.
@@ -385,7 +388,7 @@ Dans ce play, nous fournissons quelques variables à Snort indiquant que nous vo
 Exécutez maintenant le playbook:
 
 ```bash
-[student<X>@ansible ~]$ ansible-playbook enrich_snort_rule.yml
+[student<X>@ansible ~]$ ansible-navigator run enrich_snort_rule.yml
 ```
 
 Vérifions rapidement que la nouvelle règle a bien été ajoutée. Depuis le terminal de votre éditeur en ligne VS Code, ssh vers le serveur Snort en tant qu'utilisateur ec2 et jetez un œil au répertoire des règles personnalisées:
@@ -493,7 +496,7 @@ Exécutez le playbook pour supprimer les sources de journal:
 
 
 ```bash
-[student<X>@ansible ~]$ ansible-playbook rollback.yml
+[student<X>@ansible ~]$ ansible-navigator run rollback.yml
 ```
 
 De plus, nous devons quitter le processus qui simule l'attaque. Pour cela, nous utiliserons une commande Ad-hoc d'Ansible: une seule tâche exécutée via Ansible, sans avoir besoin d'écrire un playbook entier. Nous utiliserons le module shell car il prend en charge les `pipes` et peut donc chaîner plusieurs commandes ensemble. Dans un terminal de votre éditeur en ligne VS Code, exécutez la commande suivante:

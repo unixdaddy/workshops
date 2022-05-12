@@ -65,6 +65,11 @@ workshops:
         from_port: 5432
         cidr_ip: 172.16.0.0/14
         rule_desc: Cluster option DB port
+      - proto: tcp
+        to_port: 27199
+        from_port: 27199
+        cidr_ip: 0.0.0.0/0
+        rule_desc: receptor
   f5:
     ports:
       - proto: tcp
@@ -175,6 +180,16 @@ workshops:
         cidr_ip: 0.0.0.0/0
         rule_desc: DevOps Container Registry
   windows:
+    ports:
+      - proto: tcp
+        to_port: 8081
+        from_port: 8081
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        to_port: 3001
+        from_port: 3000
+        cidr_ip: 0.0.0.0/0
+        rule_desc: gitea
   rhel:
   rhel_90:
   smart_mgmt:

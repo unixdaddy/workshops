@@ -1,5 +1,8 @@
 # Exercice 1.2 - Exécution du premier playbook Check Point
 
+**Lisez ceci dans d'autres langues**: <br>
+[![uk](../../../images/uk.png) English](README.md),  [![japan](../../../images/japan.png) 日本語](README.ja.md), [![france](../../../images/fr.png) Français](README.fr.md).<br>
+
 ## Étape 2.1 - Pare-feu Check Point
 
 Pour montrer comment automatiser un pare-feu dans un environnement de sécurité, ce laboratoire contient le pare-feu Check Point (NGFW).
@@ -108,7 +111,7 @@ Au cas où vous vous poseriez la question: les trois tirets en haut, `---`, indi
 
 > **Remarque**
 >
-> Il est recommandé de rendre les playbooks plus réutilisables en les pointant vers `hosts: all` et de limiter l'exécution plus tard sur la ligne de commande ou via Tower. Mais pour l'instant, nous simplifions le processus en nommant directement les hôtes dans le playbook.
+> Il est recommandé de rendre les playbooks plus réutilisables en les pointant vers `hosts: all` et de limiter l'exécution plus tard sur la ligne de commande ou via controller. Mais pour l'instant, nous simplifions le processus en nommant directement les hôtes dans le playbook.
 
 Comme mentionné, dans cet exemple simple, nous ajouterons une entrée dans la liste d'autorisation. Une entrée se compose d'une adresse IP source, d'une adresse IP de destination et de la règle permettant l'accès entre celles-ci.
 
@@ -238,10 +241,10 @@ Enfin, nous définissons la règle d'accès entre ces deux serveurs. Les règles
 
 ## Étape 2.5 - Exécutez le playbook
 
-Les playbooks sont exécutés à l'aide de la commande `ansible-playbook` sur le nœud de contrôle. Avant d'exécuter un nouveau playbook, il est judicieux de vérifier les erreurs de syntaxe. Dans votre éditeur en ligne VS Code, dans la barre de menu, cliquez sur **Terminal** -> **Nouveau terminal**. Dans le terminal, exécutez la commande suivante:
+Les playbooks sont exécutés à l'aide de la commande `ansible-navigator` sur le nœud de contrôle. Avant d'exécuter un nouveau playbook, il est judicieux de vérifier les erreurs de syntaxe. Dans votre éditeur en ligne VS Code, dans la barre de menu, cliquez sur **Terminal** -> **Nouveau terminal**. Dans le terminal, exécutez la commande suivante:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible-playbook --syntax-check whitelist_attacker.yml
+[student<X>@ansible ansible-files]$ ansible-navigator run --syntax-check --mode stdout whitelist_attacker.yml
 ```
 
 La vérification de la syntaxe ne doit signaler aucune erreur. S'il signale une erreur, vérifiez la sortie et essayez de résoudre le problème dans le code du playbook.
@@ -249,7 +252,7 @@ La vérification de la syntaxe ne doit signaler aucune erreur. S'il signale une 
 Vous devriez maintenant être prêt à exécuter votre playbook:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible-playbook whitelist_attacker.yml
+[student<X>@ansible ansible-files]$ ansible-navigator run whitelist_attacker.yml
 
 PLAY [Whitelist attacker] *********************************************************
 

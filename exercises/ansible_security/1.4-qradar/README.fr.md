@@ -1,5 +1,8 @@
 # Exercice 1.4 - Exécution du premier playbook IBM QRadar
 
+**Lisez ceci dans d'autres langues**: <br>
+[![uk](../../../images/uk.png) English](README.md),  [![japan](../../../images/japan.png) 日本語](README.ja.md), [![france](../../../images/fr.png) Français](README.fr.md).<br>
+
 ## Étape 4.1 - IBM QRadar
 
 Pour montrer comment automatiser un SIEM dans un environnement de sécurité, nous allons utiliser [IBM QRadar, community edition](https://developer.ibm.com/qradar/ce/).
@@ -194,7 +197,7 @@ Les deux tâches collectent et produisent uniquement des données, elles ne chan
 
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible-playbook find_qradar_rule.yml
+[student<X>@ansible ansible-files]$ ansible-navigator run find_qradar_rule.yml
 
 PLAY [Find QRadar rule state] ***************************************************
 
@@ -274,7 +277,7 @@ Le playbook est maintenant terminé: il interroge QRadar pour récupérer la lis
 Après avoir terminé le playbook, exécutons-le:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible-playbook change_qradar_rule.yml
+[student<X>@ansible ansible-files]$ ansible-navigator run change_qradar_rule.yml
 
 PLAY [Change QRadar rule state] ***************************************************
 

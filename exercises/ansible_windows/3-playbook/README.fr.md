@@ -19,7 +19,7 @@ Plusieurs utilisateurs peuvent utiliser le même référentiel et git gérera le
 Aperçu
 ======
 
-À partir de maintenant, nous allons utiliser Visual Studio Code comme éditeur. Aussi, nous utiliserons GitLab pour le contrôle du code source. Cela nous permettra de minimiser le travail de développement sur la ligne de commande linux.
+À partir de maintenant, nous allons utiliser Visual Studio Code comme éditeur. Aussi, nous utiliserons Gitea pour le contrôle du code source. Cela nous permettra de minimiser le travail de développement sur la ligne de commande linux.
 D'autres éditeurs ou solutions de code source pourait aussi être utilisés.
 
 
@@ -27,7 +27,7 @@ Section 1: Création d'une structure de répertoire et de fichiers pour votre Pl
 ====================================================================================
 
 
-Il existe les [meilleurs pratiques](http://docs.ansible.com/ansible/playbooks_best_practices.html) sur les structures de répertoires à adopter pour les playbooks. Nous vous encourageons fortement à lire et à comprendre ces pratiques au fur et à mesure que vous développez vos compétences Ansible. Cela dit, notre playbook est aujourd'hui très basique et une structure de répertoire complexe n'est pas nécessaire.
+Il existe les [meilleurs pratiques](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) sur les structures de répertoires à adopter pour les playbooks. Nous vous encourageons fortement à lire et à comprendre ces pratiques au fur et à mesure que vous développez vos compétences Ansible. Cela dit, notre playbook est aujourd'hui très basique et une structure de répertoire complexe n'est pas nécessaire.
 
 Au lieu de cela, nous allons créer une structure de répertoire très simple pour notre playbook et ajouter seulement quelques fichiers.
 
@@ -72,7 +72,7 @@ Maintenant, nous que nous avons le fichier `install_iis.yml`, commençons par é
 
 - `---` Définit le début du fichier YAML
 
-- `name: install the iis web service` Cela décrit notre jeu
+- `name: install the iis web service` Cela décrit notre play
 
 - `hosts: windows` Définit le groupe d'hôtes de votre inventaire sur lequel ce play se déroulera
 
@@ -120,7 +120,7 @@ Si vous souhaitez voir l'intégralité du play pour référence, passez au bas d
       state: present
 ```
 
-- Ces trois lignes appellent le module Ansible `win_feature` pour installer le serveur Web IIS. [Cliquez ici](http://docs.ansible.com/ansible/latest/win_feature_module.html) pour voir les options disponibles du module `win_feature`.
+- Ces trois lignes appellent le module Ansible `win_feature` pour installer le serveur Web IIS. [Cliquez ici](https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_feature_module.html) pour voir les options disponibles du module `win_feature`.
 
 <!-- -->
 ```yaml
@@ -129,7 +129,7 @@ Si vous souhaitez voir l'intégralité du play pour référence, passez au bas d
       state: started
 ```
 
-- Les lignes suivantes utilisent le module ansible `win_service` pour démarrer le service IIS. Le module `win_service` est le meilleur moyen pour contrôler les services sur les hôtes distants.[Cliquez ici](http://docs.ansible.com/ansible/latest/win_service_module.html) pour voir les options disponibles du module `win_service`.
+- Les lignes suivantes utilisent le module ansible `win_service` pour démarrer le service IIS. Le module `win_service` est le meilleur moyen pour contrôler les services sur les hôtes distants.[Cliquez ici](https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_service_module.html) pour voir les options disponibles du module `win_service`.
 
 <!-- {% raw %} -->
 ```yaml
@@ -184,7 +184,7 @@ Si vous souhaitez valider le code dans git, vous pouvez vous connecter à GitLab
 Vous êtes prêt à automatiser!
 
 > **Remarque**
-> Ansible (enfin, YAML) peut être un peu pointilleux sur le formatage, en particulier autour de l'indentation/espacement. Lorsque vous aurez du temps, lisez un peu plus cette documentation sur la [Syntaxe YAML] (http://docs.ansible.com/ansible/YAMLSyntax.html) et cela vous évitera quelques maux de tête plus tard. En attendant, votre playbook terminé devrait ressembler à ceci. Prenez note de l'espacement et de l'alignement.
+> Ansible (enfin, YAML) peut être un peu pointilleux sur le formatage, en particulier autour de l'indentation/espacement. Lorsque vous aurez du temps, lisez un peu plus cette documentation sur la [Syntaxe YAML] (https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) et cela vous évitera quelques maux de tête plus tard. En attendant, votre playbook terminé devrait ressembler à ceci. Prenez note de l'espacement et de l'alignement.
 
 <!-- {% raw %} -->
 ```yaml
@@ -214,4 +214,4 @@ Vous êtes prêt à automatiser!
 ```
 <!-- {% endraw %} -->
 <br><br>
-[Cliquez ici pour revenir à l'atelier Ansible pour Windows](../readme.fr.md)
+[Cliquez ici pour revenir à l'atelier Ansible pour Windows](../README.fr.md)

@@ -60,7 +60,7 @@ Chega de teoria, é hora de criar seu primeiro Playbook. Neste laboratório, voc
 
 Este Playbook garante que o pacote que contém o servidor Apache esteja instalado no `node1`.
 
-Há uma [melhor prática(http://docs.ansible.com/ansible/playbooks_best_practices.html) nas estruturas de diretório recomendadas para playbooks. Nós recomendamos a ler e entender essas práticas ao desenvolver suas habilidades de Ansible ninja. Dito isto, nosso Playbook hoje é muito básico e criar uma estrutura complexa apenas confundirá as coisas.
+Há uma [melhor prática](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) nas estruturas de diretório recomendadas para playbooks. Nós recomendamos a ler e entender essas práticas ao desenvolver suas habilidades de Ansible ninja. Dito isto, nosso Playbook hoje é muito básico e criar uma estrutura complexa apenas confundirá as coisas.
 
 Em vez disso, vamos criar uma estrutura de diretórios muito simples para nosso playbook e adicionar apenas alguns arquivos a ele.
 
@@ -318,4 +318,4 @@ Por fim, verifique se o Apache está em execução nos dois servidores. Primeiro
 
 ----
 
-[Clique aqui para retornar ao Workshop Ansible for Red Hat Enterprise Linux](../README.pt-br.md#seção-1---exercícios-do-ansible-engine)
+[Clique aqui para retornar ao Workshop Ansible for Red Hat Enterprise Linux](../README.pt-br.md)

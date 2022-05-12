@@ -79,7 +79,7 @@ Assez de théorie, il est temps de créer votre premier Playbook Ansible. Dans c
 
 Ce Playbook s'assure que le paquet contenant le serveur Web Apache est installé sur `node1`.
 
-Il existe un guide des [meilleures pratiques](http://docs.ansible.com/ansible/playbooks_best_practices.html) sur les structures de répertoires a utilisé pour les playbooks. Nous vous encourageons fortement à lire et à comprendre ces pratiques lorsque vous développez vos compétences de maitre ninja Ansible. Cela dit, notre playbook d'aujourd'hui est très basique et créer une structure complexe ne fera que confondre les choses.
+Il existe un guide des [meilleures pratiques](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) sur les structures de répertoires a utilisé pour les playbooks. Nous vous encourageons fortement à lire et à comprendre ces pratiques lorsque vous développez vos compétences de maitre ninja Ansible. Cela dit, notre playbook d'aujourd'hui est très basique et créer une structure complexe ne fera que confondre les choses.
 
 Au lieu de cela, nous allons créer une structure de répertoire très simple pour notre playbook et y ajouter seulement quelques fichiers.
 
@@ -355,6 +355,6 @@ Enfin, vérifiez si Apache fonctionne maintenant sur les deux serveurs. Identifi
 ----
 **Navigation**
 <br>
-[Exercise précédent](../1.2-adhoc/README.fr.md) - [Exercise suivant](../1.4-variables/README.fr.md)
+[Exercise précédent](../1.2-thebasics/README.fr.md) - [Exercise suivant](../1.4-variables/README.fr.md)
 
 [Cliquez ici pour revenir à l'atelier Ansible pour Red Hat Enterprise Linux](../README.fr.md)

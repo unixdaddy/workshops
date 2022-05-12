@@ -17,13 +17,9 @@ Demonstrate use of the [BIG-IP config module](https://docs.ansible.com/ansible/l
 
 ## Step 1:
 
-Using your text editor of choice create a new file called `bigip-config.yml`.
+Using VSCode create a new file called `bigip-config.yml` by clicking the new file icon in the left pane.
 
-```
-[student1@ansible ~]$ nano bigip-config.yml
-```
-
->`vim` and `nano` are available on the control node, as well as Visual Studio and Atom via RDP
+![picture of create file icon](../1.1-get-facts/images/vscode-openfile_icon.png)
 
 ## Step 2:
 
@@ -44,8 +40,6 @@ Enter the following play definition into `bigip-config.yml`:
 - `connection: local` tells the Playbook to run locally (rather than SSHing to itself)
 - `gather_facts: false` disables facts gathering.  We are not using any fact variables for this playbook.
 
-Do not exit the editor yet.
-
 ## Step 3
 
 Next, add the `task`. This task will use the `bigip-config` to save the running configuration to disk
@@ -54,7 +48,7 @@ Next, add the `task`. This task will use the `bigip-config` to save the running 
 ``` yaml
   tasks:
     - name: SAVE RUNNING CONFIG ON BIG-IP
-      bigip_config:
+      f5networks.f5_modules.bigip_config:
         provider:
           server: "{{private_ip}}"
           user: "{{ansible_user}}"
@@ -79,20 +73,20 @@ Next, add the `task`. This task will use the `bigip-config` to save the running 
   still saved to the startup config. This option will always cause the module to return changed
 - The `validate_certs: "no"` parameter tells the module to not validate SSL certificates.  This is just used for demonstration purposes   since this is a lab.
 
-Save File and exit out of editor.
+Save File.
 
 ## Step 4
 
-Run the playbook - exit back into the command line of the control host and execute the following:
+Run the playbook - Go back to the Terminal on VS Code server and execute the following:
 
 ```
-[student1@ansible ~]$ ansible-playbook bigip-config.yml
+[student1@ansible ~]$ ansible-navigator run bigip-config.yml --mode stdout
 ```
 
 # Playbook Output
 
 ```yaml
-[student1@ansible]$ ansible-playbook bigip-config.yml
+[student1@ansible]$ ansible-navigator run bigip-config.yml --mode stdout
 
 PLAY [BIG-IP SETUP] *******************************************************************************
 

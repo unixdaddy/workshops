@@ -44,11 +44,6 @@ As an example you would like to install an FTP server, but only on hosts that ar
 To do that, first edit the inventory to add another group, and place `node2` in it. Make sure that that IP address of `node2` is always the same when `node2` is listed. Edit the inventory `~/lab_inventory/hosts` to look like the following listing:
 
 ```ini
-[all:vars]
-ansible_user=student1
-ansible_ssh_pass=ansible
-ansible_port=22
-
 [web]
 node1 ansible_host=11.22.33.44
 node2 ansible_host=22.33.44.55
@@ -58,7 +53,7 @@ node3 ansible_host=33.44.55.66
 node2 ansible_host=22.33.44.55
 
 [control]
-ansible ansible_host=44.55.66.77
+ansible-1 ansible_host=44.55.66.77
 ```
 
 Next create the file `ftpserver.yml` on your control host in the `~/ansible-files/` directory:
@@ -84,7 +79,7 @@ Run it and examine the output. The expected outcome: The task is skipped on node
 
 ```bash
 TASK [Install FTP server when host in ftpserver group] *******************************************
-skipping: [ansible]
+skipping: [ansible-1]
 skipping: [node1]
 skipping: [node3]
 changed: [node2]
@@ -104,8 +99,7 @@ As a an example, let’s write a playbook that:
 First we need the file Ansible will deploy, let’s just take the one from node1. Remember to replace the IP address shown in the listing below with the IP address from your individual `node1`.
 
 ```bash
-[student<X>@ansible ansible-files]$ scp node1:/etc/httpd/conf/httpd.conf ~/ansible-files/files/.
-student<X>@11.22.33.44's password:
+[student<X>@ansible-1 ansible-files]$ scp node1:/etc/httpd/conf/httpd.conf ~/ansible-files/files/.
 httpd.conf
 ```
 
@@ -122,7 +116,7 @@ Next, create the Playbook `httpd_conf.yml`. Make sure that you are in the direct
       src: httpd.conf
       dest: /etc/httpd/conf/
     notify:
-        - restart_apache
+      - restart_apache
   handlers:
     - name: restart_apache
       service:
@@ -153,15 +147,15 @@ Listen 8080
 Apache should now listen on port 8080. Easy enough to verify:
 
 ```bash
-[student1@ansible ansible-files]$ curl http://node1
+[student<X>@ansible-1 ansible-files]$ curl http://node1
 curl: (7) Failed to connect to node1 port 80: Connection refused
-[student1@ansible ansible-files]$ curl http://node1:8080
+[student<X>@ansible-1 ansible-files]$ curl http://node1:8080
 <body>
-<h1>This is a production webserver, take care!</h1>
+<h1>This is a development webserver, have fun!</h1>
 </body>
 ```
 
-Feel free to change the httpd.conf file again and run the playbook.
+Leave the setting for listen on port 8080. We'll use this in a later exercise.
 
 ### Step 3 - Simple Loops
 
@@ -244,14 +238,47 @@ Check the output:
 
 * Again the task is listed once, but three changes are listed. Each loop with its content is shown.
 
-Verify that the user `dev_user` was indeed created on `node1`:
+Verify that the user `dev_user` was indeed created on `node1` using the following playbook:
+
+{% raw %}
+```yaml
+---
+- name: Get user ID
+  hosts: node1
+  vars:
+    myuser: "dev_user"
+  tasks:
+    - name: Get {{ myuser }} info
+      getent:
+        database: passwd
+        key: "{{ myuser }}"
+    - debug:
+        msg:
+          - "{{ myuser }} uid: {{ getent_passwd['dev_user'].1 }}"
+```
+{% endraw %}
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m command -a "id dev_user"
-node1 | CHANGED | rc=0 >>
-uid=1002(dev_user) gid=1002(dev_user) Gruppen=1002(dev_user),50(ftp)
-```
+$ ansible-navigator run user_id.yml -m stdout
 
+PLAY [Get user ID] *************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [node1]
+
+TASK [Get dev_user info] *******************************************************
+ok: [node1]
+
+TASK [debug] *******************************************************************
+ok: [node1] => {
+    "msg": [
+        "dev_user uid: 1002"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+node1                      : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
 ---
 **Navigation**
 <br>
