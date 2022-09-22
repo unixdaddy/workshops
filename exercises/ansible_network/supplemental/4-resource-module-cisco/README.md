@@ -39,7 +39,7 @@ Configuring [SNMP](https://en.wikipedia.org/wiki/Simple_Network_Management_Proto
 This exercise will cover:
 
 * Configuring SNMP on Cisco IOS
-* Building an Ansible Playbook using the [arista.eos.snmp_server module](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_snmp_server_module.html#ansible-collections-cisco-ios-ios-snmp-server-module).
+* Building an Ansible Playbook using the [cisco.ios.snmp_server module](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_snmp_server_module.html#ansible-collections-cisco-ios-ios-snmp-server-module).
 * Understanding the `state: merged`
 * Understanding the `state: gathered`
 
@@ -52,7 +52,7 @@ This exercise will cover:
 * From the control node terminal, you can `ssh rtr2` and type `enable`
 
   ```bash
-  [student1@ansible-1 ~]$ ssh rtr1
+  [student@ansible-1 ~]$ ssh rtr1
 
 
   rtr1#

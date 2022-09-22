@@ -71,7 +71,7 @@ Comme les rôles, les collections doivent également être installées avant de 
 Installons la collection de modules QRadar sur votre hôte de contrôle. Dans votre éditeur en ligne VS Code, ouvrez un nouveau terminal. Exécutez la commande `ansible-galaxy collection --help` pour vérifier que la fonction collections fonctionne correctement:
 
 ```bash
-[student<X>@ansible ~]$ ansible-galaxy collection --help
+[student@ansible ~]$ ansible-galaxy collection --help
 usage: ansible-galaxy collection [-h] COLLECTION_ACTION ...
 
 positional arguments:
@@ -150,7 +150,7 @@ Ensuite, nous apportons les tâches réelles. L'API REST de QRadar est conçue d
   tasks:
     - name: get info about qradar rule
       qradar_rule_info:
-        name: "DDoS Attack Detected"
+        name: "Potential DDoS Against Single Host (TCP)"
 ```
 
 Ce module renvoie de nombreuses informations, parmi lesquelles l'ID dont nous avons besoin pour désactiver le rôle. Enregistrons les informations retournées dans une variable à l'aide du mot-clé `register`. Il est directement utilisé avec le module lui-même. Cela nous permet d'utiliser le contenu de la variable dans la tâche suivante.
@@ -165,7 +165,7 @@ Ce module renvoie de nombreuses informations, parmi lesquelles l'ID dont nous av
   tasks:
     - name: get info about qradar rule
       qradar_rule_info:
-        name: "DDoS Attack Detected"
+        name: "Potential DDoS Against Single Host (TCP)"
       register: rule_info
 ```
 

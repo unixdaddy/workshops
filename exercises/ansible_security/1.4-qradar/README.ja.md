@@ -165,7 +165,7 @@ project](https://github.com/ansible-security/ibm_qradar). にあります。
 
 > **注記**
 >
-> Ansible Automation Platform には、独自のカスタム実行環境を作成するために使用できる `ansible-builder` が含まれています。`ansible-builder` の詳細は、[blog post](https://www.ansible.com/blog/introduction-to-ansible-builder). を参照してください。   
+> Ansible Automation Platform には、独自のカスタム実行環境を作成するために使用できる `ansible-builder` が含まれています。`ansible-builder` の詳細は、[blog post](https://www.ansible.com/blog/introduction-to-ansible-builder). を参照してください。
 
 ## ステップ 4.4 - 最初の Playbook の例
 
@@ -203,7 +203,7 @@ VS Code のオンラインエディターで、ユーザーのホームディレ
   tasks:
     - name: get info about qradar rule
       qradar_rule_info:
-        name: "DDoS Attack Detected"
+        name: "Potential DDoS Against Single Host (TCP)"
 ```
 
 このモジュールは多くの情報を返しますが、その中には実際にロールを無効にするために必要な ID も含まれています。ここでは、`register`
@@ -219,7 +219,7 @@ VS Code のオンラインエディターで、ユーザーのホームディレ
   tasks:
     - name: get info about qradar rule
       qradar_rule_info:
-        name: "DDoS Attack Detected"
+        name: "Potential DDoS Against Single Host (TCP)"
       register: rule_info
 ```
 
@@ -251,7 +251,7 @@ VS Code のオンラインエディターで、ユーザーのホームディレ
 どちらのタスクもデータを収集して出力するだけで、何も変更しません。さっそく Playbook を実行し、返ってきたデータを見てみましょう。
 
 ```bash
-[student<X>@ansible-1 ~]$ ansible-navigator run find_qradar_rule.yml --mode stdout
+[student@ansible-1 ~]$ ansible-navigator run find_qradar_rule.yml --mode stdout
 ```
 ![QRadar rule ID](images/1.4-qradar-id.png#centreme)
 
@@ -271,7 +271,7 @@ VS Code のオンラインエディターで、ユーザーのホームディレ
 
 では、これをモジュールに値として提供し、ルール `qradar_rule` を無効にできる新しい Playbook を作成してみましょう。
 
-VS Code のオンラインエディターで、ホームディレクトリー `/home/student<X>/` に新しいファイル `change_qradar_rule.yml` を作成します。ここ `qradar` に名前およびターゲットホストを追加します。
+VS Code のオンラインエディターで、ホームディレクトリー `/home/student/` に新しいファイル `change_qradar_rule.yml` を作成します。ここ `qradar` に名前およびターゲットホストを追加します。
 
 <!-- {% raw %} -->
 ```yaml
@@ -301,7 +301,7 @@ VS Code のオンラインエディターで、ホームディレクトリー `/
 Playbook が完了したら、これを実行してみましょう。
 
 ```bash
-[student<X>@ansible-1 ~]$ ansible-navigator run change_qradar_rule.yml --mode stdout
+[student@ansible-1 ~]$ ansible-navigator run change_qradar_rule.yml --mode stdout
 
 PLAY [Change QRadar rule state] ***************************************************
 

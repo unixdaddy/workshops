@@ -37,6 +37,7 @@ Here are the setup directions you have to perform one time for the [workshop pro
 
 | package  | `dnf`   | `pip`  |
 |---|---|---|
+| [git](https://git.kernel.org/pub/scm/git/git.git) | `git` | N/A |
 | [ansible-core](https://docs.ansible.com/core.html) 2.11 or newer | `ansible-core` | `ansible-core` |
 | [boto3](https://aws.amazon.com/sdk-for-python/) - required for `amazon.aws` collection | `python3-boto3` | `boto3` |
 | [netaddr](https://netaddr.readthedocs.io/en/latest/)| `python3-netaddr` | `netaddr` |
@@ -73,7 +74,7 @@ The windows workshops will also require pywinrm and requests-credssp
 
 | package  | `dnf`   | `pip`  |
 |---|---|---|
-| [pywinrm](https://github.com/diyan/pywinrm)| `python3-pywinrm` | `pywinrm`
+| [pywinrm](https://github.com/diyan/pywinrm)| `python3-winrm` | `pywinrm`
 | [requests-credssp](https://pypi.org/project/requests-credssp/)| `python3-requests-credssp` | `requests-credssp` |
 
 
@@ -102,14 +103,14 @@ If you haven't done so already make sure you have the repo cloned to the machine
 ## 6. Run the requirements.yml file to ensure all the Ansible collection prerequisites are met.
 ￼
 ￼```
-￼ansible-galaxy collection install -r requirements.yml
+￼ansible-galaxy collection install -r collections/requirements.yml
 ￼```
 
 ## 7.  Subscribe to AWS marketplace images
 
 Some of the workshops require specific images provided via the AWS marketplace:
 
-  - For Networking you will need the Cisco CSR (Cloud Services Router) [Click here](https://aws.amazon.com/marketplace/pp/B00NF48FI2/), the Arista vEOS Router [Click here](https://aws.amazon.com/marketplace/pp/B077YJYMK5/), AND the Juniper vSRX NextGen Firewall [Click here](https://aws.amazon.com/marketplace/pp/B01LYWCGDX/)
+  - For Networking you will need the Cisco CSR (Cloud Services Router) [Click here](https://aws.amazon.com/marketplace/pp/B00NF48FI2/), the Arista CloudEOS Router (PAYG) [Click here](https://aws.amazon.com/marketplace/pp/prodview-v5qiohwjlngay), **AND** the Juniper vSRX NextGen Firewall [Click here](https://aws.amazon.com/marketplace/pp/B01LYWCGDX/)
   - For F5 you will need the F5 BIG-IP [Click here](https://aws.amazon.com/marketplace/pp/B079C44MFH/)
   - For the security workshop the [Check Point CloudGuard Security Management](https://aws.amazon.com/marketplace/pp/B07KSBV1MM?qid=1613741711380&sr=0-2&ref_=srh_res_product_title) and the [Check Point CloudGuard Network Security](https://aws.amazon.com/marketplace/pp/B07LB3YN9P?ref_=aws-mp-console-subscription-detail-byol)
 

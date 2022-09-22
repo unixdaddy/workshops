@@ -18,7 +18,7 @@ Have a first look at the SIEM, and verify that it is actually working. Point you
 
 > **Note**
 >
-> In a production environment, accepting a insecure certificate would not be an option. Since the lab setup is only short lived and solely serves a demo purpose we accept the risk in this case.  
+> In a production environment, accepting a insecure certificate would not be an option. Since the lab setup is only short lived and solely serves a demo purpose we accept the risk in this case.
 
 > **Note**
 >
@@ -83,7 +83,7 @@ Automation execution environments can be customized to include the collections y
 
 > **Note**
 >
-> Ansible Automation Platform includes `ansible-builder` which you can use to create your own custom execution environments. For more information on `ansible-builder` please have a look at our [blog post](https://www.ansible.com/blog/introduction-to-ansible-builder).   
+> Ansible Automation Platform includes `ansible-builder` which you can use to create your own custom execution environments. For more information on `ansible-builder` please have a look at our [blog post](https://www.ansible.com/blog/introduction-to-ansible-builder).
 
 ## 1.4.4 First example playbook
 
@@ -119,7 +119,7 @@ Next we bring in the actual tasks. The REST API of QRadar is designed in a way t
   tasks:
     - name: get info about qradar rule
       qradar_rule_info:
-        name: "DDoS Attack Detected"
+        name: "Potential DDoS Against Single Host (TCP)"
 ```
 
 This module returns a lot of information, among those the ID we need to actually disable the role. Let's register the returned information into a variable with the help of the `register` keyword. It is directly used with the module itself. This enables us to use the content of the variable in the next task.
@@ -134,7 +134,7 @@ This module returns a lot of information, among those the ID we need to actually
   tasks:
     - name: get info about qradar rule
       qradar_rule_info:
-        name: "DDoS Attack Detected"
+        name: "Potential DDoS Against Single Host (TCP)"
       register: rule_info
 ```
 
@@ -165,7 +165,7 @@ So how do the information returned by the module actually look like? How about w
 Both tasks only collect and output data, they do not change anything. Let's quickly run the playbook to look at the returned data:
 
 ```bash
-[student<X>@ansible-1 ~]$ ansible-navigator run find_qradar_rule.yml --mode stdout
+[student@ansible-1 ~]$ ansible-navigator run find_qradar_rule.yml --mode stdout
 ```
 ![QRadar rule ID](images/1.4-qradar-id.png#centreme)
 
@@ -179,7 +179,7 @@ How do we get the key when it is in this structure? First, it is in the segment 
 
 So, let's write a new playbook where we provide this as a value to the module which can disable the rule, `qradar_rule`.
 
-In your VS Code online editor, create a new file, `change_qradar_rule.yml` in the home directory `/home/student<X>/`. Add the name and target hosts, here `qradar`.
+In your VS Code online editor, create a new file, `change_qradar_rule.yml` in the home directory `/home/student/`. Add the name and target hosts, here `qradar`.
 
 <!-- {% raw %} -->
 ```yaml
@@ -209,7 +209,7 @@ The playbook is now complete: it queries QRadar for the list of rules, and deact
 After we completed the playbook, let's execute it:
 
 ```bash
-[student<X>@ansible-1 ~]$ ansible-navigator run change_qradar_rule.yml --mode stdout
+[student@ansible-1 ~]$ ansible-navigator run change_qradar_rule.yml --mode stdout
 
 PLAY [Change QRadar rule state] ***************************************************
 
